@@ -44,6 +44,9 @@
             @Html.DisplayNameFor(model => model.User.PhoneNumber)
         </dt>
         <dd>
+            @Html.DisplayFor(model => model.User.PhoneNumber)
+        </dd>
+<dd>
     </dl>
 </div>
 <div>
@@ -54,7 +57,9 @@
 
 @if (Model.Properties.Count == 0)
 {
-   < h5 > Not properties added yet.</ h5 >
+   <h5> 
+       Not properties added yet.
+   </h5>
 }
 else
 {
