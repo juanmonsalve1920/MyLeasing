@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using MyLeasing.Web.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyLeasing.Web.Helper
 {
@@ -16,23 +14,47 @@ namespace MyLeasing.Web.Helper
             _dataContext = dataContext;
         }
 
-        public IEnumerable<SelectListItem> GetComboPropertyType()
+        public IEnumerable<SelectListItem> GetComboLessees()
         {
-            var List = _dataContext.PropertyTypes.Select(pt => new SelectListItem
+            var List = _dataContext.Lessees.Select(l => new SelectListItem
             {
-                Text = pt.Name,
-                Value = $"{pt.Id}"
+                Text = l.User.FullNameWithDocument,
+                Value = $"{l.Id}"
             })
-                .OrderBy(pt => pt.Text)
+                .OrderBy(l => l.Text)
                 .ToList();
 
             List.Insert(0, new SelectListItem
             {
-                Text = "(Select a property type...)",
+                Text = "(Select a Lessee...)",
                 Value = "0"
             });
 
             return List;
+        }
+
+    public IEnumerable<SelectListItem> GetComboPropertyType()
+    {
+        var List = _dataContext.PropertyTypes.Select(pt => new SelectListItem
+        {
+            Text = pt.Name,
+            Value = $"{pt.Id}"
+        })
+            .OrderBy(pt => pt.Text)
+            .ToList();
+
+        List.Insert(0, new SelectListItem
+        {
+            Text = "(Select a property type...)",
+            Value = "0"
+        });
+
+        return List;
+    }
+
+        public IEnumerable<SelectListItem> GetComboPropertyTypes()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

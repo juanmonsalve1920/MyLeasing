@@ -5,6 +5,8 @@ namespace MyLeasing.Web.Helper
 {
     public interface ICombosHelper
     {
-        IEnumerable<SelectListItem> GetComboPropertyType();
+        IEnumerable<SelectListItem> GetComboPropertyTypes();
+
+        IEnumerable<SelectListItem> GetComboLessees();
     }
 }
