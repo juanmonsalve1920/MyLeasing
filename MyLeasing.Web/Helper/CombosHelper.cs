@@ -33,28 +33,26 @@ namespace MyLeasing.Web.Helper
             return List;
         }
 
-    public IEnumerable<SelectListItem> GetComboPropertyType()
-    {
-        var List = _dataContext.PropertyTypes.Select(pt => new SelectListItem
-        {
-            Text = pt.Name,
-            Value = $"{pt.Id}"
-        })
-            .OrderBy(pt => pt.Text)
-            .ToList();
-
-        List.Insert(0, new SelectListItem
-        {
-            Text = "(Select a property type...)",
-            Value = "0"
-        });
-
-        return List;
-    }
 
         public IEnumerable<SelectListItem> GetComboPropertyTypes()
         {
-            throw new System.NotImplementedException();
+            var List = _dataContext.PropertyTypes.Select(pt => new SelectListItem
+            {
+                Text = pt.Name,
+                Value = $"{pt.Id}"
+            })
+                .OrderBy(pt => pt.Text)
+                .ToList();
+
+            List.Insert(0, new SelectListItem
+            {
+                Text = "(Select a property type...)",
+                Value = "0"
+            });
+
+            return List;
         }
     }
+
+    
 }
